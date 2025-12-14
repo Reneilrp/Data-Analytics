@@ -1,6 +1,7 @@
 import pandas as pd
 import joblib
-from sklearn.metrics import accuracy_score, recall_score, precision_score, confusion_matrix
+# Added f1_score to the imports below
+from sklearn.metrics import accuracy_score, recall_score, precision_score, confusion_matrix, f1_score
 
 # ==========================================
 # 1. LOAD THE TEST DATA
@@ -32,12 +33,14 @@ for name in model_names:
         acc = accuracy_score(y_test, y_pred)
         rec = recall_score(y_test, y_pred, zero_division=0)
         prec = precision_score(y_test, y_pred, zero_division=0)
+        f1 = f1_score(y_test, y_pred, zero_division=0) # <--- Calculated F1 here
         
         # Print Report
         print(f"\n>>> {name.replace('_', ' ')}")
         print(f"Accuracy:  {acc:.2%}")
         print(f"Recall:    {rec:.2%} (Floods Caught)")
         print(f"Precision: {prec:.2%}")
+        print(f"F1 Score:  {f1:.4f}") # <--- Printed F1 here
         
         # Confusion Matrix
         cm = confusion_matrix(y_test, y_pred)

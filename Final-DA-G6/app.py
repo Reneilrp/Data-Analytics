@@ -38,11 +38,6 @@ input_data = {
     'Elevation_m': [INPUT_ELEVATION]
 }
 
-# --- CRITICAL FIX: MATCHING YOUR DATASET EXACTLY ---
-# Your dataset only has: Manila, Marikina, Pasig, Quezon City.
-# "Manila" was dropped during training (drop_first=True), so it doesn't get a column.
-# The model ONLY expects columns for the others.
-
 # These are the columns the model EXPECTS to see:
 model_expected_cities = ["Marikina", "Pasig", "Quezon City"]
 
